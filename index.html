@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Likhitha Sri Anjali • Portfolio</title>
+<meta name="description" content="Portfolio of Likhitha Sri Anjali — AI & Data Science student and web developer.">
+<style>
+  :root{
+    --bg:#0f1220;--panel:#161a2d;--muted:#8a92b2;--text:#e9ecff;--brand1:#6c63ff;--brand2:#8a4dff;
+    --ring:rgba(140,130,255,.45);--ok:#00d084;--warn:#ffbd2e;--danger:#ff6b6b;
+  }
+  [data-theme="light"] {
+    --bg:#f0f2ff;--panel:#ffffff;--muted:#5a5f7d;--text:#1a1f3f;--brand1:#6c63ff;--brand2:#8a4dff;
+    --ring:rgba(108,99,255,.25);--ok:#00875a;--warn:#b56c00;--danger:#d84c4c;
+  }
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+       color:var(--text);background:radial-gradient(1200px 600px at 10% -10%,#1a1f3f 0%,transparent 60%),
+       radial-gradient(1000px 500px at 100% 0%,#241a44 0%,transparent 55%),var(--bg);
+       transition:background 0.3s ease, color 0.3s ease;}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1140px;margin:auto;padding:0 20px}
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:30;background:rgba(135, 154, 241, 0.6);backdrop-filter:blur(12px);
+       border-bottom:1px solid rgba(255,255,255,.06); transition: all 0.3s ease;}
+  [data-theme="light"] .nav {
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:65px}
+  .brand{display:flex;align-items:center;gap:.6rem;font-weight:700}
+  .brand-badge{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;
+               background:linear-gradient(135deg,var(--brand1),var(--brand2));box-shadow:0 0 0 6px rgba(108,99,255,.15)}
+  .links{display:flex;gap:22px;font-weight:600;align-items: center;}
+  .hire{padding:.6rem .9rem;border-radius:999px;background:linear-gradient(135deg,#FFEDDF); color: #0f1220;
+        box-shadow:0 8px 24px -8px var(--ring)}
+  .menu{display:none; background: transparent; border: none; color: var(--text); font-size: 1.2rem; cursor: pointer;}
+  .theme-toggle {background: transparent; border: none; color: var(--text); cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;}
+  @media (max-width:860px){
+    .links{position:fixed;inset:64px 0 auto 0;background:rgba(15,18,32,.95);backdrop-filter:blur(8px);
+           flex-direction:column;padding:18px 24px;border-bottom:1px solid rgba(255,255,255,.06); 
+           display: none; z-index: 20;}
+    .links.open{display:flex}
+    .menu{display:inline-flex;gap:.5rem;align-items:center;padding:.45rem .7rem;border:1px solid rgba(255,255,255,.08);border-radius:8px}}
+  [data-theme="light"] .links {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  /* HERO */
+  .hero{padding:72px 0 36px}
+  .grid2{display:grid;grid-template-columns:1.2fr .9fr;gap:36px}
+  @media (max-width:860px){.grid2{grid-template-columns:1fr}}
+  .title{font-size:clamp(28px,4.2vw,44px);line-height:1.1;font-weight:800}
+  .subtitle{color:var(--muted);margin:12px 0 20px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+  .btn{padding:.8rem 1rem;border-radius:14px;background:linear-gradient(135deg,var(--brand1),var(--brand2));
+       font-weight:700;box-shadow:0 10px 30px -10px var(--ring); border: none; cursor: pointer; transition: all 0.2s ease;}
+  .btn:hover {transform: translateY(-2px); box-shadow: 0 12px 35px -8px var(--ring);}
+  .btn.outline{background:transparent;border:1px solid rgba(255,255,255,.14)}
+  [data-theme="light"] .btn.outline {
+    border: 1px solid rgba(0,0,0,.14);
+  }
+  .chip{display:inline-flex;gap:.5rem;align-items:center;color:var(--muted);margin-top:14px}
+  .avatar-wrap{position:relative;aspect-ratio:1/1;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#20264a,#1a1e3a); transition: all 0.3s ease;}
+  [data-theme="light"] .avatar-wrap {
+    background: linear-gradient(160deg, #e6e9ff, #d5d9f0);
+  }
+  .glow{position:absolute;inset:-20%;filter:blur(40px);background:
+        radial-gradient(200px 200px at 20% 20%,rgba(108,99,255,.55),transparent 60%),
+        radial-gradient(260px 180px at 80% 85%,rgba(138,77,255,.55),transparent 60%)}
+  .avatar{position:absolute;inset:10px;border-radius:22px;border:1px solid rgba(255,255,255,.08);
+          display:grid;place-items:center;color:var(--muted); overflow: hidden;}
+  [data-theme="light"] .avatar {
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  .avatar img {width: 100%; height: 100%; object-fit: cover;}
+  /* SECTIONS */
+  section{padding:36px 0}
+  h2{font-size:clamp(22px,3vw,32px);margin:6px 0 18px}
+  .lead{color:var(--muted);margin-bottom:22px}
+  /* CARDS */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media (max-width:1024px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.cards{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+        border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px; box-shadow:0 12px 40px -20px rgba(0,0,0,.6);
+        transition: all 0.3s ease;}
+  [data-theme="light"] .card {
+    background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8));
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 8px 30px -10px rgba(0,0,0,.1);
+  }
+  .card h3{margin:4px 0 8px;font-size:18px}
+  .muted{color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .tag{font-size:.8rem;padding:.25rem .55rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)}
+  [data-theme="light"] .tag {
+    background: rgba(0,0,0,.05);
+    border: 1px solid rgba(0,0,0,.1);
+  }
+  .pill{font-size:.78rem;padding:.35rem .6rem;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+  [data-theme="light"] .pill {
+    background: rgba(0,0,0,.05);
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .row .btn{padding:.55rem .7rem;border-radius:10px;font-weight:700}
+  /*COLORED Experience Cards */
+  .p-pink{background-color: #be185d;}
+  .p-red{background: linear-gradient(160deg,#4f46e5 0%,#ec4899 100%); border-color: #ce3e4a;}
+  .p-orange{background:linear-gradient(160deg,#a7f3d0 0%, #f9a8d4 100%);border-color:#ce3e4a}
+  .p-lightgreen{background:linear-gradient(160deg,#4af0d2c0 0%, #142048 100%);border-color:#55810959}
+  /* COLORED project cards */
+  .p-blue{background:linear-gradient(160deg,#1c2b64 0%, #142048 100%);border-color:#25316b}
+  .p-green{background:linear-gradient(160deg,#0f3b2f 0%, #0b2a22 100%);border-color:#135a47}
+  .p-purple{background:linear-gradient(160deg,#3b2063 0%, #2b1849 100%);border-color:#522b86}
+  /* SKILLS */
+  .skills{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  @media (max-width:1024px){.skills{grid-template-columns:repeat(4,1fr)}}
+  @media (max-width:640px){.skills{grid-template-columns:repeat(2,1fr)}}
+  .skill{padding:12px;border-radius:12px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+         transition: all 0.2s ease;}
+  .skill:hover {transform: translateY(-3px);}
+  [data-theme="light"] .skill {
+    background: rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  /* CONTACT + FOOTER */
+  .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+  @media (max-width:860px){.contact{grid-template-columns:1fr}}
+  input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.1);
+                 background:rgba(255,255,255,.03);color:var(--text); transition: all 0.3s ease;}
+  [data-theme="light"] input, [data-theme="light"] textarea {
+    border: 1px solid rgba(0,0,0,.1);
+    background: rgba(0,0,0,.03);
+  }
+  textarea{min-height:120px;resize:vertical}
+  .footer{padding:20px 0;color:var(--muted);background:rgba(4, 29, 138, 0.6);border-top:1px solid rgba(238, 233, 233, 0.06);margin-top:30px}
+  [data-theme="light"] .footer {
+    background: rgba(200, 210, 255, 0.6);
+    border-top: 1px solid rgba(0,0,0,.06);
+  }
+  .tiny{font: size 0.8em;}
+  /* Animation classes */
+  .fade-in {opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease;}
+  .fade-in.visible {opacity: 1; transform: translateY(0);}
+</style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge">🌟</div>
+        <div>Likhitha Sri Anjali</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+        <button class="menu" id="menuBtn">☰</button>
+      </div>
+      <div class="links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+        <a class="hire" href="mailto:likhitha@example.com">Hire Me</a>
+        <button class="theme-toggle mobile-only" id="mobileThemeToggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="container grid2">
+      <div>
+        <div class="pill tiny">Python & Frontend Developer</div>
+        <h1 class="title" style="margin-top:8px">Hi, I'm <span style="background:linear-gradient(135deg,var(--brand1),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent">Likhitha Sri Anjali</span></h1>
+        <p class="subtitle">
+          Passionate about creating innovative solutions through code. Experienced in web development and AI/ML projects.I love exploring data, designing intelligent solutions, and continuously improving my skills. Apart from academics, my NCC journey has helped me develop discipline, teamwork, and leadership, which I bring into every project I work on."
+        </p>
+        <div class="cta">
+          <a class="btn" href="#projects">View My Work</a>
+          <a class="btn outline" href="#contact">Get In Touch</a>
+        </div>
+        <div class="chip">📍 India &nbsp;•&nbsp; 🎓 B.Tech (AI & DS), 3rd Year</div>
+      </div>
+      <div class="avatar-wrap">
+        <div class="glow"></div>
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Likhitha Sri Anjali - AI & Data Science Professional">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <h2>Professional <span style="color:var(--brand2)">Experience</span></h2>
+      <p class="lead">My journey through internships and roles, gaining hands-on skills across web and AI.</p>
+      <div class="cards">
+        <article class="card p-red fade-in">
+          <div class="pill tiny">2024</div>
+          <h3>Web Developer Intern — GAO Tech</h3>
+          <p class="muted">Developed responsive web interfaces and improved UX using modern frontend practices.</p>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span 
+class="tag">React</span>
+          </div>
+        </article>
+        <article class="card p-red fade-in">
+          <div class="pill tiny">2024</div>
+          <h3>AI Intern — Microsoft (Virtual)</h3>
+          <p class="muted">Worked on ML workflows and model deployment concepts for enterprise use-cases.</p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Azure AI</span><span class="tag">Machine 
+Learning</span><span class="tag">Data Analysis</span>
+          </div>
+        </article>
+
+        <article class="card p-red fade-in">
+          <div class="pill tiny">2024</div>
+          <h3>Full Stack Development Intern — Novitech</h3>
+          <p class="muted">Implemented autentication and CRUD operations with MongoDB.</p>
+          <div class="tags">
+            <span class="tag">HTML5</span><span class="tag">Node.js</span><span class="tag">Responsive web 
+Design</span><span class="tag">GitHub</span>
+          </div>
+        </article>
+        <article class="card p-red fade-in">
+          <div class="pill tiny">2024</div>
+          <h3>AI Developer Intern — Viswam AI</h3>
+          <p class="muted">Implemented deep-learning models and computer-vision pipelines for real data.</p>
+          <div class="tags">
+            <span class="tag">TensorFlow</span><span class="tag">OpenCV</span><span class="tag">Deep 
+Learning</span><span class="tag">CV</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2>Featured <span style="color:var(--brand1)">Projects</span></h2>
+      <p class="lead">A showcase across AI and web development.</p>
+      <div class="cards">
+        <article class="card p-blue fade-in">
+          <div class="pill tiny">Web Development</div>
+          <h3>Real-Time Chat Application</h3>
+          <p class="muted">Modern messaging app with instant updates, file sharing, and presence.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span 
+class="tag">Socket.io</span></div>
+          <div class="row"><a class="btn outline" href="#">Demo</a><a class="btn" href="#">Code</a></div>
+        </article>
+
+        <article class="card p-green fade-in">
+          <div class="pill tiny">Mobile App Development</div>
+          <h3>To-Do-List App</h3>
+          <p class="muted">A simple and efficient To-Do-List app to organise, tasks, set priorities, and boost 
+productivity.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">React</span></div>
+          <div class="row"><a class="btn outline" href="#">Demo</a><a class="btn" href="#">Code</a></div>
+        </article>
+
+        <article class="card p-purple fade-in">
+          <div class="pill tiny">Frontend</div>
+          <h3>Dynamic Portfolio Website</h3>
+          <p class="muted">Responsive, animated portfolio with sections for skills, projects, and certs.</p>
+          <div class="tags"><span class="tag">TypeScript</span><span class="tag">Tailwind (concept)</span><span 
+class="tag">Responsive</span></div>
+          <div class="row"><a class="btn outline" href="#home">Demo</a><a class="btn" href="#">Code</a></div>
+        </article>
+
+        <article class="card p-green fade-in">
+          <div class="pill tiny">ML</div>
+          <h3>Student Performance Predictor</h3>
+          <p class="muted">Predicts grades from study habits and attendance using regression models.</p>
+          <div class="tags"><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span 
+class="tag">Python</span></div>
+        </article>
+
+        <article class="card p-purple fade-in">
+          <div class="pill tiny">NLP</div>
+          <h3>Fake News Detection</h3>
+          <p class="muted">Classifies articles as real/fake with TF-IDF and linear classifiers.</p>
+          <div class="tags"><span class="tag">NLP</span><span class="tag">LogReg</span><span 
+class="tag">sklearn</span></div>
+        </article>
+
+        <article class="card p-blue fade-in">
+          <div class="pill tiny">IoT/Data</div>
+          <h3>Air-Quality (AQI) Tracker</h3>
+          <p class="muted">City-wise AQI dashboard with trends and alerts.</p>
+          <div class="tags"><span class="tag">Charts</span><span class="tag">API</span><span 
+class="tag">JS</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skills">
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">Python</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">Machine Learning</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">Deep Learning</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">Data Science</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">Pandas / NumPy</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">Node.js</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">MongoDB</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">SQL</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">HTML</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">CSS</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">JavaScript</div>
+        </article>
+        <article class="card p-lightgreen fade-in">
+        <div class="skill">React</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <h2>Education</h2>
+      <div class="card fade-in">
+        <h3>B.Tech — Artificial Intelligence & Data Science</h3>
+        <h4 class="muted">Satya Institute of Technology and Management : 2023 - 2027</h4>
+        <p class="tiny">Coursework: AI, ML, DL, DBMS, Web Development.</p>
+      </div>
+            <div class="card fade-in">
+        <h3>Intermediate  —  MPC</h3>
+        <h4 class="muted">Sri Gayatri Junior College : 2020 - 2022</h4>
+      </div>
+       <div class="card fade-in">
+        <h3> High School </h3>
+        <h4 class="muted">Chaitanya Public School : 2020</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="container">
+      <h2>Certifications</h2>
+      <div class="cards">
+        <div class="card fade-in"><h3>Masterclass in Full Stack Development</h3><p class="muted tiny">NoviTech</p></div>
+        <div class="card fade-in"><h3>AWS-Cloud Computing</h3><p class="muted tiny">APSSDC</p></div>
+        <div class="card fade-in"><h3>Machine Learning Basics</h3><p class="muted tiny">Saylor Academy</p></div>
+        <div class="card fade-in"><h3>Web Development Fundamentals</h3><p class="muted tiny">HTML, CSS, JS</p></div>
+        <div class="card fade-in"><h3>Resume Writing and Job Interviewing</h3><p class="muted tiny">HP Life</p></div>
+        <div class="card fade-in"><h3>Programming in Java</h3><p class="muted tiny">NPTEL</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact">
+        <form class="card fade-in" onsubmit="event.preventDefault(); alert('Thanks! I will get back to you.');">
+          <h3>Let's work together</h3>
+          <p class="muted tiny">This demo form shows an alert. Link it to Formspree/EmailJS later.</p>
+          <div style="display:grid;gap:12px;margin-top:12px">
+            <input placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+            <textarea placeholder="Tell me about your project..." required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </div>
+        </form>
+        <div class="card fade-in">
+          <h3>Reach me directly</h3>
+          <p class="muted">Email: <a class="pill" href="mailto:likhitha@example.com">likhitha@example.com</a></p>
+          <p class="muted">GitHub: <a class="pill" href="#" target="_blank">github.com/likhitha</a></p>
+          <p class="muted">LinkedIn: <a class="pill" href="#" target="_blank">linkedin.com/in/likhitha</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container tiny">© <span id="yr"></span> Likhitha Sri Anjali • All rights reserved.</div>
+  </footer>
+
+<script>
+  // mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  }
+  
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  
+  // theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  // Set initial theme
+  let currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateThemeIcon();
+  
+  function toggleTheme() {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
+    updateThemeIcon();
+  }
+  
+  function updateThemeIcon() {
+    const icon = currentTheme === 'light' ? '🌙' : '☀';
+    if (themeToggle) themeToggle.textContent = icon;
+    if (mobileThemeToggle) mobileThemeToggle.textContent = icon;
+  }
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+  
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+  }
+  
+  // Scroll animations
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  function checkFade() {
+    fadeElements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementBottom = element.getBoundingClientRect().bottom;
+      const isVisible = (elementTop < window.innerHeight - 100) && (elementBottom > 0);
+      
+      if (isVisible) {
+        element.classList.add('visible');
+      }
+    });
+  }
+  
+  // Initial check
+  checkFade();
+  
+  // Listen for scroll events
+  window.addEventListener('scroll', checkFade);
+  
+  // Close mobile menu when clicking a link
+  document.querySelectorAll('.links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
